@@ -18,3 +18,11 @@
 ## Game Previews
 
 (Will be added later)
+
+---
+
+## Screen Recordings
+> Of the 4-hour process
+
+[(1/2)](https://youtu.be/NLUOk9iKeuI)
+[(2/2)](https://youtu.be/z2KzEdRKAZY)
