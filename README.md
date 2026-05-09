@@ -17,7 +17,13 @@
 
 ## Game Previews
 
-(Will be added later)
+> Time Attack mode:
+
+![timeAttack](https://github.com/taan41/Winter_Wolf_IEC_Intern_Test-Unity/blob/main/Assets/Readme/time_attack.gif)
+
+> AutoWin function:
+
+![autoWin](https://github.com/taan41/Winter_Wolf_IEC_Intern_Test-Unity/blob/main/Assets/Readme/auto_win.gif)
 
 ---
 
