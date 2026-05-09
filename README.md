@@ -11,6 +11,7 @@
   - The generation count of each tile type is a multiple of the match number, and the counts are kept as evenly distributed as possible.
   - Aniamtions for valid moves and cleared tile matches.
   - Timed Mode: The player must clear the board within 60 seconds. Filling the holding row does not result in a loss. Tiles in the holding row can be selected again to return them to their original positions.
+  - Extra features (made outside the 4-hour limit): 'AutoLose' and 'AutoWin' buttons in the pause menu. 'AutoLose' plays all tiles from bottom-left to top-right corner. 'AutoWin' only plays matching tile types, iterating through all types until the board is cleared.
 
 ---
 
