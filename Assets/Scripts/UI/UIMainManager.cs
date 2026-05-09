@@ -1,0 +1,121 @@
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
+using UnityEngine.UI;
+
+using static GameManager;
+
+public class UIMainManager : MonoBehaviour
+{
+    private IMenu[] m_menuList;
+
+    private GameManager m_gameManager;
+
+    private void Awake()
+    {
+        m_menuList = GetComponentsInChildren<IMenu>(true);
+    }
+
+    void Start()
+    {
+        for (int i = 0; i < m_menuList.Length; i++)
+        {
+            m_menuList[i].Setup(this);
+        }
+    }
+
+    internal void ShowMainMenu()
+    {
+        m_gameManager.ClearLevel();
+        m_gameManager.SetState(eStateGame.MAIN_MENU);
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (m_gameManager.State == eStateGame.GAME_STARTED)
+            {
+                m_gameManager.SetState(eStateGame.PAUSE);
+            }
+            else if (m_gameManager.State == eStateGame.PAUSE)
+            {
+                m_gameManager.SetState(eStateGame.GAME_STARTED);
+            }
+        }
+    }
+
+    internal void Setup(GameManager gameManager)
+    {
+        m_gameManager = gameManager;
+        m_gameManager.StateChangedAction += OnGameStateChange;
+    }
+
+    private void OnGameStateChange(eStateGame state)
+    {
+        switch (state)
+        {
+            case eStateGame.SETUP:
+                break;
+            case eStateGame.MAIN_MENU:
+                ShowMenu<UIPanelMain>();
+                break;
+            case eStateGame.GAME_STARTED:
+                ShowMenu<UIPanelGame>();
+                break;
+            case eStateGame.PAUSE:
+                ShowMenu<UIPanelPause>();
+                break;
+            case eStateGame.GAME_OVER:
+                ShowMenu<UIPanelGameOver>();
+                break;
+            case eStateGame.GAME_WIN:
+                ShowMenu<UIPanelGameWin>();
+                break;
+        }
+    }
+
+    private void ShowMenu<T>() where T : IMenu
+    {
+        for (int i = 0; i < m_menuList.Length; i++)
+        {
+            IMenu menu = m_menuList[i];
+            if(menu is T)
+            {
+                menu.Show();
+            }
+            else
+            {
+                menu.Hide();
+            }            
+        }
+    }
+
+    internal Text GetLevelConditionView()
+    {
+        UIPanelGame gamePanel = m_menuList.Where(x => x is UIPanelGame).Cast<UIPanelGame>().FirstOrDefault();
+        if (gamePanel)
+        {
+            return gamePanel.LevelConditionView;
+        }
+
+        return null;
+    }
+
+    internal void ShowPauseMenu()
+    {
+        m_gameManager.SetState(eStateGame.PAUSE);
+    }
+
+    internal void LoadLevel(eLevelMode levelMode)
+    {
+        m_gameManager.LoadLevel(levelMode);
+    }
+
+    internal void ShowGameMenu()
+    {
+        m_gameManager.SetState(eStateGame.GAME_STARTED);
+    }
+}
