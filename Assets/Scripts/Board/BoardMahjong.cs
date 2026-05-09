@@ -136,9 +136,9 @@ public class BoardMahjong
         }
     }
 
-    internal void OnCellClicked(CellMahjong cell, Action callback)
+    internal bool OnCellClicked(CellMahjong cell, Action callback)
     {
-        if (cell.IsEmpty || !cell.AllowClicking) return;
+        if (cell.IsEmpty || !cell.AllowClicking) return false;
 
         if (!cell.IsBottom && BottomItemCount < BottomSize)
         {
@@ -196,7 +196,7 @@ public class BoardMahjong
                 }
             }
         }
-        else if (cell.AllowClicking)
+        else if (cell.IsBottom && cell.AllowClicking)
         {
             // return item from bottom row to its original position
             Item item = cell.Item;
@@ -214,6 +214,8 @@ public class BoardMahjong
                 FindMatchesAndShift(callback);
             });
         }
+
+        return true;
     }
 
     internal void FindMatchesAndShift(Action callback)
@@ -320,7 +322,7 @@ public class BoardMahjong
 
                     OnCellClicked(m_cells[x, y], null);
 
-                    yield return new WaitForSeconds(1f);
+                    yield return new WaitForSeconds(0.5f);
                 }
             }
         }
@@ -397,7 +399,7 @@ public class BoardMahjong
                         {
                             OnCellClicked(cell as CellMahjong, null);
 
-                            yield return new WaitForSeconds(1f);
+                            yield return new WaitForSeconds(0.5f);
                         }
                     }
                 }

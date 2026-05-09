@@ -129,10 +129,13 @@ public class BoardController : MonoBehaviour
                 {
                     IsBusy = true;
 
-                    m_mahjong.OnCellClicked(cell, () =>
+                    if (!m_mahjong.OnCellClicked(cell, () =>
                     {
                         IsBusy = false;
-                    });
+                    }))
+                    {
+                        IsBusy = false;
+                    }
                 }
             }
             
