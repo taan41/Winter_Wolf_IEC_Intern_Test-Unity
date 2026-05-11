@@ -1,11 +1,16 @@
-## Accomplished Goals:
+## Accomplished Goals
 
-- Re-skin:
+- **Codebase:**
+  - This project acts as an extension of the original project:
+    - The new and modified code follows the existing code's style.
+    - New functionality was added with minimal changes to the old systems.
+    - Players can play both the original Match-3 mode and the newly added modes.
+- **Re-skin:**
   - By modifying the prefabs' textures
-- UI:
+- **UI:**
   - Added 1 extra screen for losing.
-- Changes/Improvements to Gameplay:
-  - Similar to Mahjong Match puzzle games, but instead of multiple layers, this game uses a single 6x4 board and a row of 5 slots used for holding selected tiles. Both have configurable sizes.
+- **Changes/Improvements to Gameplay:**
+  - Added a new mode similar to Mahjong Match puzzle games, but instead of multiple layers, this game uses a single 6x4 board and a row of 5 slots used for holding selected tiles. Both have configurable sizes.
   - The selected tiles placed in the holding row will be sorted automatically. Match 3 identical tiles at the same time to clear them (this number can be adjusted using configs).
   - The player wins by clearing the entire board, and loses when every slot in the holding row is filled.
   - The generation count of each tile type is a multiple of the match number, and the counts are kept as evenly distributed as possible.
