@@ -103,7 +103,7 @@
 ## Self Notes/Lessons
 
 - Should've pushed the original project first to view changes more easily
-- An interface/abstract class for board classes could've been made, but I didn't due to time constraint
+- An interface/abstract class for board classes and a more polished system for reskinning could've been made, but weren't implemented due to time constraint
 
 ---
 
